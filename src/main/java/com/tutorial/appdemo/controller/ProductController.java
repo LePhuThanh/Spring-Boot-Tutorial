@@ -28,20 +28,9 @@ public class ProductController {
     private ProductRepository repository;
 
     // ------------------------------------------------------------------------------------------------------------//
-    // @GetMapping("/getAllProducts") // Read data to return list products => string
-    // type
-    @GetMapping("")
-    // This request is: http://localhost:8080/api/v1/Products/getAllProducts //v1 is
-    // version 1
+    @GetMapping("") // This request is: http://localhost:8080/api/v1/Products/getAllProducts //v1 is version 1
     List<Product> getAllProducts() {
-        return repository.findAll(); // where is data?
-
-        // return List.of(
-        // new Product(1L, "Macbook pro 16 inch", 2020, 2400.0, ""), // 1L is STT: 1
-        // Long Type
-        // new Product(2L, "Ipad air green", 2021, 599.0, ""));
-        // // You must save this database, Now we have H2 DB = In-memory Database
-        // // You can also send request using Postman
+        return repository.findAll(); //H2 DB = In-memory Database // You can also send request using Postman
     }
 
     // ------------------------------------------------------------------------------------------------------------//
@@ -57,9 +46,6 @@ public class ProductController {
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                         new ResponseObject("False", "Cannot Find Product With Id = " + id, ""));
 
-        // return repository.findById(id)
-        // .orElseThrow(() -> new RuntimeException("Cannot find product with id = " +
-        // id));
     }
 
     // ------------------------------------------------------------------------------------------------------------//
@@ -102,7 +88,7 @@ public class ProductController {
     ResponseEntity<ResponseObject> deleteProduct(@PathVariable Long id) {
         boolean exist = repository.existsById(id);
         if (exist) {
-            repository.deleteById(id);
+            repository.deleteById(id); // Available in JPA
             return ResponseEntity.status(HttpStatus.OK).body(
                     new ResponseObject("Ok", "Delete Product Successfully", ""));
         }

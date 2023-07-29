@@ -8,12 +8,10 @@ import jakarta.persistence.Id;
 
 //POJO = Plain Object Java Object
 @Entity
-
 public class Product {
     // this is "primary key"
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) // self-generated ID //auto-increament
-
     private Long id;
     private String productName;
     @Column(name = "yearDemo") // the same with data types in MySQL cause error
