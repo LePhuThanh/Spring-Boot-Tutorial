@@ -1,18 +1,30 @@
 package com.tutorial.appdemo.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.Calendar;
+
 
 //POJO = Plain Object Java Object
 @Entity
+@Table(name ="tblProduct") //Assign name for table Product
 public class Product {
     // this is "primary key"
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) // self-generated ID //auto-increament
+//    @GeneratedValue(strategy = GenerationType.AUTO) // self-generated ID //auto-increament
+    @SequenceGenerator(
+            name = "product_sequence",
+            sequenceName = "product_sequence",
+            allocationSize = 1 //increment by 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "product_sequence"
+    )
+
     private Long id;
+    //Validate = constraint
+    @Column(nullable = false, unique = true, length = 300) // Don't allow the same productName & Don't NULL
     private String productName;
     @Column(name = "yearDemo") // the same with data types in MySQL cause error
     private int year;
@@ -21,6 +33,13 @@ public class Product {
 
     // default constructor
     public Product() {
+    }
+
+    //Calculated field = transient //It isn't available in DB => Ex: scores Math, scores Literature  => Average scores
+    @Transient
+    private int age; // age is calculated from year
+    public int getAge() {
+        return Calendar.getInstance().get(Calendar.YEAR) - year; //Current year - year = age
     }
 
     public Product(String productName, int year, Double price, String url) {
