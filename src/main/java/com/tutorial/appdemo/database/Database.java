@@ -47,10 +47,10 @@ public class Database {
 */
 /*
 docker run -d --rm --name mysql-spring-boot-tutorial `
--e MYSQL_ROOT_PASSWORD=123456 `
--e MYSQL_USER=hoangnd `
--e MYSQL_PASSWORD=123456 `
--e MYSQL_DATABASE=test_db `
+-e MYSQL_ROOT_PASSWORD=Phuthanh071099 `
+-e MYSQL_USER=root
+-e MYSQL_PASSWORD=Phuthanh071099 `
+-e MYSQL_DATABASE=testspringboot
 -p 3301: 3006 `
 --volume mysql-spring-boot-tutorial-volume://var/Lib/mysql  `
 mysql: latest
