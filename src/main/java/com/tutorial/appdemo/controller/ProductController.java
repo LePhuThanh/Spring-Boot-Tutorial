@@ -19,7 +19,7 @@ import com.tutorial.appdemo.models.Product;
 import com.tutorial.appdemo.models.ResponseObject;
 import com.tutorial.appdemo.repositories.ProductRepository;
 
-@RestController // Inform Java Spring this class is controller
+@RestController // Inform Java Spring this class is controller return data JSON type
 @RequestMapping(path = "/api/v1/Products") // link to send request for this controller
 
 public class ProductController {

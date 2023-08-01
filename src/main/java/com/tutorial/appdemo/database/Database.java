@@ -21,13 +21,13 @@ public class Database {
         return new CommandLineRunner() { // Create object execute interface CommandLineRunner (specific is run function)
             @Override
             public void run(String... args) throws Exception {
-                Product productA = new Product("Macbook Pro 16", 2020, 2400.0, "");
-                Product productB = new Product("iPad Air Grean", 2021, 599.0, "");
-                Product productC = new Product("IWatch Pro Black", 2022, 350.0, "");
-                // Save 2 table into Database
-                logger.info("Insert data: " + productRepository.save(productA)); // logger.info = system.out.print
-                logger.info("Insert data: " + productRepository.save(productB));
-                logger.info("Insert data: " + productRepository.save(productC));
+//                Product productA = new Product("Macbook Pro 16", 2020, 2400.0, "");
+//                Product productB = new Product("iPad Air Grean", 2021, 599.0, "");
+//                Product productC = new Product("IWatch Pro Black", 2022, 350.0, "");
+//                // Save 2 table into Database
+//                logger.info("Insert data: " + productRepository.save(productA)); // logger.info = system.out.print
+//                logger.info("Insert data: " + productRepository.save(productB));
+//                logger.info("Insert data: " + productRepository.save(productC));
 
             }
         };
